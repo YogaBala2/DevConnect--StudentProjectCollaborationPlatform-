@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+--primary: #4f46e5;
+--secondary: #7c3aed;
+
+--success: #10b981;
+--danger: #ef4444;
+--warning: #f59e0b;
+
+--text-primary: #111827;
+--text-secondary: #64748b;
+
+--background: #f8fafc;
+--white: #ffffff;
+
+--radius-sm: 8px;
+--radius-md: 12px;
+--radius-lg: 16px;
+
+--shadow-sm: 0 4px 10px rgba(0,0,0,.05);
+--shadow-md: 0 10px 25px rgba(0,0,0,.08);
+--shadow-lg: 0 20px 40px rgba(0,0,0,.12);
+
+--transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+:root {
+--primary: #4f46e5;
+--secondary: #7c3aed;
+--success: #10b981;
+--danger: #ef4444;
+--warning: #f59e0b;
+--text-primary: #111827;
+--text-secondary: #64748b;
+--bg: #f8fafc;
+--white: #ffffff;
+
+--shadow-sm: 0 4px 10px rgba(0,0,0,.05);
+--shadow-md: 0 10px 25px rgba(0,0,0,.08);
+--shadow-lg: 0 20px 40px rgba(0,0,0,.12);
+
+--radius: 16px;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: 'Inter', sans-serif;
+
+background: linear-gradient(
+135deg,
+#f8fafc,
+#eef2ff
+);
+
+color: var(--text-primary);
+
+min-height: 100vh;
+
+line-height: 1.6;
+
+overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+width: 8px;
+}
+
+::-webkit-scrollbar-track {
+background: #e5e7eb;
+}
+
+::-webkit-scrollbar-thumb {
+background: linear-gradient(
+#4f46e5,
+#7c3aed
+);
+
+border-radius: 20px;
+}
+
+a {
+text-decoration: none;
+color: inherit;
+transition: .3s ease;
+}
+
+a:hover {
+color: var(--primary);
+}
+
+button {
+border: none;
+cursor: pointer;
+
+color: white;
+
+font-weight: 600;
+
+border-radius: 12px;
+
+padding: 12px 22px;
+
+background: linear-gradient(
+135deg,
+var(--primary),
+var(--secondary)
+);
+
+transition: .3s ease;
+}
+
+button:hover {
+transform: translateY(-2px);
+
+box-shadow:
+0 10px 25px rgba(
+79,
+70,
+229,
+.25
+);
+}
+
+button:active {
+transform: scale(.98);
+}
+
+input,
+textarea,
+select {
+width: 100%;
+max-width: 100%;
+
+padding: 14px;
+
+border: 1px solid #dbe2ea;
+
+border-radius: 12px;
+
+font-size: 15px;
+
+transition: .3s ease;
+
+background: white;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+outline: none;
+
+border-color: var(--primary);
+
+box-shadow:
+0 0 0 4px rgba(
+79,
+70,
+229,
+.12
+);
+}
+
+textarea {
+resize: vertical;
+}
+
+.container {
+max-width: 1200px;
+
+margin: auto;
+
+padding: 20px;
+}
+
+.page-title {
+text-align: center;
+
+font-size: 2.8rem;
+
+font-weight: 800;
+
+color: var(--text-primary);
+
+margin-bottom: 40px;
+
+animation: fadeUp .7s ease;
+}
+
+.card {
+background: rgba(255,255,255,.8);
+
+backdrop-filter: blur(10px);
+
+border-radius: var(--radius);
+
+padding: 25px;
+
+box-shadow: var(--shadow-md);
+
+transition: .35s ease;
+
+animation: fadeUp .6s ease;
+}
+
+.card:hover {
+transform: translateY(-6px);
+
+box-shadow: var(--shadow-lg);
+}
+
+.badge {
+display: inline-block;
+
+padding: 6px 12px;
+
+border-radius: 30px;
+
+font-size: 13px;
+
+font-weight: 600;
+}
+
+.badge-success {
+background: #dcfce7;
+color: #166534;
+}
+
+.badge-danger {
+background: #fee2e2;
+color: #991b1b;
+}
+
+.badge-warning {
+background: #fef3c7;
+color: #92400e;
+}
+
+.grid-2 {
+display: grid;
+grid-template-columns: repeat(2,1fr);
+gap: 20px;
+}
+
+.grid-3 {
+display: grid;
+grid-template-columns: repeat(3,1fr);
+gap: 20px;
+}
+
+.grid-4 {
+display: grid;
+grid-template-columns: repeat(4,1fr);
+gap: 20px;
+}
+
+.spinner {
+width: 40px;
+height: 40px;
+
+border: 4px solid #e5e7eb;
+
+border-top: 4px solid var(--primary);
+
+border-radius: 50%;
+
+animation: spin 1s linear infinite;
+}
+
+@keyframes fadeUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes spin {
+from {
+transform: rotate(0deg);
+}
+
+to {
+transform: rotate(360deg);
+}
+}
+
+@media (max-width: 992px) {
+.grid-4 {
+grid-template-columns: repeat(2,1fr);
+}
+
+.grid-3 {
+grid-template-columns: repeat(2,1fr);
+}
+}
+
+@media (max-width: 768px) {
+.grid-2,
+.grid-3,
+.grid-4 {
+grid-template-columns: 1fr;
+}
+
+.page-title {
+font-size: 2rem;
+}
+
+.container {
+padding: 15px;
+}
+}

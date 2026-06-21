@@ -1,0 +1,199 @@
+.navbar {
+position: sticky;
+top: 0;
+z-index: 1000;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+padding: 14px 40px;
+
+background: rgba(15, 23, 42, 0.95);
+
+backdrop-filter: blur(12px);
+
+box-shadow:
+0 4px 20px rgba(
+0,
+0,
+0,
+.12
+);
+
+animation: slideDown .6s ease;
+}
+
+.nav-brand {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.nav-logo {
+width: 52px;
+height: 52px;
+
+border-radius: var(--radius-md);
+
+object-fit: cover;
+
+transition: var(--transition);
+}
+
+.nav-logo:hover {
+transform:
+rotate(5deg)
+scale(1.05);
+}
+
+.brand-title {
+color: var(--white);
+
+font-size: 28px;
+
+font-weight: 800;
+}
+
+.brand-subtitle {
+color: rgba(
+255,
+255,
+255,
+.7
+);
+
+font-size: 11px;
+
+letter-spacing: 1px;
+}
+
+.navbar-links {
+display: flex;
+align-items: center;
+gap: 24px;
+}
+
+.navbar-links a {
+position: relative;
+
+color: var(--white);
+
+font-weight: 500;
+
+transition: var(--transition);
+}
+
+.navbar-links a:hover {
+color: var(--secondary);
+}
+
+.navbar-links a::after {
+content: "";
+
+position: absolute;
+
+left: 0;
+bottom: -5px;
+
+width: 0;
+height: 2px;
+
+background: var(--secondary);
+
+transition: .3s;
+}
+
+.navbar-links a:hover::after {
+width: 100%;
+}
+
+.navbar-user {
+color: var(--white);
+
+font-weight: 700;
+
+padding: 8px 14px;
+
+border-radius: var(--radius-md);
+
+background: rgba(
+255,
+255,
+255,
+.08
+);
+}
+
+.logout-btn {
+background: linear-gradient(
+135deg,
+var(--danger),
+#dc2626
+);
+
+color: var(--white);
+
+border: none;
+
+padding: 10px 18px;
+
+border-radius: var(--radius-md);
+
+font-weight: 600;
+
+transition: var(--transition);
+}
+
+.logout-btn:hover {
+transform:
+translateY(-2px);
+
+box-shadow:
+0 10px 20px rgba(
+239,
+68,
+68,
+.25
+);
+}
+
+@keyframes slideDown {
+from {
+opacity: 0;
+transform: translateY(-30px);
+}
+
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@media (max-width: 900px) {
+.navbar {
+padding: 14px 20px;
+flex-wrap: wrap;
+gap: 15px;
+}
+
+.navbar-links {
+gap: 16px;
+flex-wrap: wrap;
+}
+
+.brand-title {
+font-size: 22px;
+}
+}
+
+@media (max-width: 768px) {
+.navbar {
+flex-direction: column;
+text-align: center;
+}
+
+.navbar-links {
+justify-content: center;
+}
+}
