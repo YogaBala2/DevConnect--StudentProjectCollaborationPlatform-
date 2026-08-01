@@ -1,6 +1,18 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
+import {
+  FaUserCircle,
+  FaEye,
+  FaEyeSlash,
+} from "react-icons/fa";
+
+import {
+  MdPerson,
+  MdEmail,
+  MdLock,
+} from "react-icons/md";
+
 import useAuth from "../hooks/useAuth";
 
 import "../styles/auth.css";
@@ -10,12 +22,14 @@ const Register = () => {
 
   const { register } = useAuth();
 
-  const [formData, setFormData] =
-    useState({
-      name: "",
-      email: "",
-      password: "",
-    });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const [showPassword, setShowPassword] =
+    useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -25,9 +39,7 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = async (
-    e
-  ) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -48,67 +60,234 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-card">
-        <img
-          src="/logo.png"
-          alt="DevConnect"
-          className="auth-logo"
-        />
+    <div className="auth-container">
 
-        <h1 className="auth-title">
-          Create Account
-        </h1>
+      {/* LEFT PANEL */}
 
-        <p className="auth-subtitle">
-          Join DevConnect Today
-        </p>
+      <div className="auth-left">
 
-        <form
-          className="auth-form"
-          onSubmit={handleSubmit}
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+        <div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+          {/* Logo */}
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
+          <div className="auth-brand">
 
-          <button
-            type="submit"
-            className="auth-btn"
-          >
-            Register
-          </button>
-        </form>
+            <img
+              src="/logo.png"
+              alt="DevConnect"
+            />
 
-        <div className="auth-link">
-          <Link to="/login">
-            Already have an account?
-          </Link>
+            <h2>DevConnect</h2>
+
+          </div>
+
+          {/* Content */}
+
+          <div className="auth-content">
+
+            <h1>
+
+              Start Your
+
+              <br />
+
+              <span>Journey.</span>
+
+              <br />
+
+              Today.
+
+            </h1>
+
+            <p>
+
+              Create your DevConnect
+              account to discover
+              teammates, collaborate on
+              innovative projects,
+              manage tasks and build
+              your portfolio.
+
+            </p>
+
+            <div className="feature-list">
+
+              <div className="feature">
+
+                <div className="feature-icon">
+                  🤝
+                </div>
+
+                Connect with Students
+
+              </div>
+
+              <div className="feature">
+
+                <div className="feature-icon">
+                  💡
+                </div>
+
+                Build Innovative Projects
+
+              </div>
+
+              <div className="feature">
+
+                <div className="feature-icon">
+                  📈
+                </div>
+
+                Showcase Your Skills
+
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
+
+        {/* Illustration */}
+
+        <div className="auth-illustration">
+
+          <img
+            src="/auth-illustration.jpeg"
+            alt="Developers"
+          />
+
+        </div>
+
       </div>
+
+      {/* RIGHT PANEL */}
+
+      <div className="auth-right">
+
+        <div className="login-card">
+
+          <div className="avatar-icon">
+
+            <FaUserCircle />
+
+          </div>
+
+          <h2>Create Account</h2>
+
+          <p>
+
+            Join DevConnect and start
+            collaborating today.
+
+          </p>
+
+          <form onSubmit={handleSubmit}>
+
+            {/* Name */}
+
+            <label>Full Name</label>
+
+            <div className="input-box">
+
+              <MdPerson className="input-icon" />
+
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your full name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+
+            </div>
+
+            {/* Email */}
+
+            <label>Email Address</label>
+
+            <div className="input-box">
+
+              <MdEmail className="input-icon" />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+
+            </div>
+
+            {/* Password */}
+
+            <label>Password</label>
+
+            <div className="input-box">
+
+              <MdLock className="input-icon" />
+
+              <input
+                type={
+                  showPassword
+                    ? "text"
+                    : "password"
+                }
+                name="password"
+                placeholder="Create a password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+
+              <button
+                type="button"
+                className="eye-btn"
+                onClick={() =>
+                  setShowPassword(
+                    !showPassword
+                  )
+                }
+              >
+                {showPassword ? (
+                  <FaEyeSlash />
+                ) : (
+                  <FaEye />
+                )}
+              </button>
+
+            </div>
+
+            {/* Register */}
+
+            <button
+              type="submit"
+              className="signin-btn"
+            >
+              Create Account
+            </button>
+
+          </form>
+
+          <div className="register-link">
+
+            Already have an account?{" "}
+
+            <Link to="/login">
+
+              Sign In
+
+            </Link>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
   );
 };
